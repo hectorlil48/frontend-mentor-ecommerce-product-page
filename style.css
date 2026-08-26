@@ -22,6 +22,12 @@ ol {
   list-style: none;
 }
 
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 /* Set shorter line heights on headings and interactive elements */
 h1,
 h2,
@@ -85,10 +91,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 19px 24px 24px;
 }
 
 .nav__menu-logo {
   display: flex;
+  align-items: end;
+  gap: 16px;
 }
 
 .nav__links {
@@ -97,9 +106,12 @@ body {
 
 .nav__cart-profile {
   display: flex;
+  gap: 24px;
 }
 
 .nav__profile-image {
   width: 24px;
   height: 24px;
 }
+
+/* Product Carousel */
