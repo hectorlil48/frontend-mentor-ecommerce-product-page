@@ -5,6 +5,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Prevent font size inflation */
@@ -12,20 +14,6 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-}
-
-/* Remove default margin in favour of better control in authored CSS */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin-block-end: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -53,12 +41,6 @@ h4 {
   text-wrap: balance;
 }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-}
-
 /* Make images easier to work with */
 img,
 picture {
@@ -73,11 +55,6 @@ textarea,
 select {
   font-family: inherit;
   font-size: inherit;
-}
-
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
 }
 
 :root {
@@ -101,4 +78,28 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   font-family: "Kumbh Sans", sans-serif;
+}
+
+/* Nav Bar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__menu-logo {
+  display: flex;
+}
+
+.nav__links {
+  display: none;
+}
+
+.nav__cart-profile {
+  display: flex;
+}
+
+.nav__profile-image {
+  width: 24px;
+  height: 24px;
 }
