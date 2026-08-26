@@ -38,26 +38,69 @@
     </nav>
 
     <main>
-      <div class="carousel__container">
-        <div class="carousel">
+      <div class="product__container">
+        <div class="carousel__container">
           <div class="carousel__item carousel__item-visible">
             <img src="./images/image-product-1.jpg" alt="Product image 1" />
           </div>
+
           <div class="carousel__item">
             <img src="./images/image-product-2.jpg" alt="Product image 2" />
           </div>
+
           <div class="carousel__item">
             <img src="./images/image-product-3.jpg" alt="Product image 3" />
           </div>
+
           <div class="carousel__item">
             <img src="./images/image-product-4.jpg" alt="Product image 4" />
+          </div>
+
+          <div class="carousel__actions">
+            <button class="carousel__prev" aria-label="Previous image">
+              <img src="./images/icon-previous.svg" alt="" />
+            </button>
+
+            <button class="carousel__next" aria-label="Next image">
+              <img src="./images/icon-next.svg" alt="" />
+            </button>
+          </div>
         </div>
-        <div class="carousel__actions">
-          <button class="carousel__prev" aria-label="Previous image">
-            <img src="./images/icon-previous.svg" alt="" />
-          </button>
-          <button class="carousel__next" aria-label="Next image">
-            <img src="./images/icon-next.svg" alt="" />
+
+        <div class="product__info">
+          <p class="product__company">SNEAKER COMPANY</p>
+          <h1 class="product__title">Fall Limited Edition Sneakers</h1>
+          <p class="product__description">
+            These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
+          </p>
+          <div class="product__price">
+            <div class="product__discounted-price">
+              <span class="product__discount">$125.00</span>
+              <span class="product__discount-percentage">50%</span>
+            </div>
+            <span class="product__original-price">$250.00</span>
+          </div>
+
+          <div class="product__quantity">
+            <button
+              class="product__quantity-btn"
+              aria-label="Decrease quantity"
+            >
+              <img src="./images/icon-minus.svg" alt="" />
+            </button>
+            <span class="product__quantity-value">0</span>
+            <button
+              class="product__quantity-btn"
+              aria-label="Increase quantity"
+            >
+              <img src="./images/icon-plus.svg" alt="" />
+            </button>
+          </div>
+
+          <button class="product__add-to-cart" aria-label="Add to cart">
+            Add to cart
           </button>
         </div>
       </div>
