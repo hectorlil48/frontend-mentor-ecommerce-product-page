@@ -50,7 +50,8 @@ const priceText = document.querySelector(
   ".product__discount-price",
 ).textContent;
 const price = parseFloat(priceText.replace("$", ""));
-console.log(price);
+let cartCount = document.querySelector(".nav__cart-badge");
+let totalItems = 0;
 
 document
   .querySelector(".product__decrease")
@@ -76,4 +77,21 @@ function decreaseCount() {
 function increaseCount() {
   quantity++;
   count.textContent = quantity;
+}
+
+document
+  .querySelector(".product__add-to-cart")
+  .addEventListener("click", function () {
+    addToCart();
+  });
+
+function addToCart() {
+  if (quantity === 0) {
+  } else {
+    totalItems = totalItems + quantity;
+    cartCount.textContent = totalItems;
+    cartCount.style.display = "flex";
+    quantity = 0;
+    count.textContent = quantity;
+  }
 }
