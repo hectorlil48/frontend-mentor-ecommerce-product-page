@@ -3,6 +3,11 @@ let slidePosition = 0;
 const slides = document.getElementsByClassName("carousel__item");
 const totalSlides = slides.length;
 
+// Cart Selectors
+const cartEmpty = document.querySelector(".cart__empty");
+const cartFull = document.querySelector(".cart__full");
+const cartQuantity = document.querySelector(".cart__quantity");
+
 document
   .querySelector(".carousel__prev")
   .addEventListener("click", function () {
@@ -91,6 +96,13 @@ function addToCart() {
     totalItems = totalItems + quantity;
     cartCount.textContent = totalItems;
     cartCount.style.display = "flex";
+    cartEmpty.style.display = "none";
+    cartFull.style.display = "block";
+    cartQuantity.textContent = totalItems;
+    const totalPrice = (totalItems * price).toFixed(2);
+
+    document.querySelector(".cart__total-price").textContent = "$" + totalPrice;
+
     quantity = 0;
     count.textContent = quantity;
   }
@@ -99,11 +111,42 @@ function addToCart() {
 // Cart dropdown logic
 const cartBtn = document.querySelector(".nav__cart");
 const cartDropdown = document.querySelector(".cart__dropdown");
-
 cartBtn.addEventListener("click", function () {
   if (cartDropdown.style.display === "block") {
     cartDropdown.style.display = "none";
   } else {
     cartDropdown.style.display = "block";
   }
+});
+
+// Cart delete button logic
+const cartDeleteBtn = document.querySelector(".cart__delete");
+
+cartDeleteBtn.addEventListener("click", function () {
+  totalItems = 0;
+  cartCount.textContent = totalItems;
+  cartCount.style.display = "none";
+  cartEmpty.style.display = "block";
+  cartFull.style.display = "none";
+});
+
+// Mobile menu logic
+const mobileMenuBtn = document.querySelector(".nav__menu-icon");
+const mobileMenuCloseBtn = document.querySelector(".mobile__close-menu");
+const mobileMenu = document.querySelector(".mobile__menu");
+const mobileOverlay = document.querySelector(".mobile__overlay");
+
+mobileMenuBtn.addEventListener("click", function () {
+  mobileMenu.style.left = "0";
+  mobileOverlay.style.display = "block";
+});
+
+mobileMenuCloseBtn.addEventListener("click", function () {
+  mobileMenu.style.left = "-250px";
+  mobileOverlay.style.display = "none";
+});
+
+mobileOverlay.addEventListener("click", function () {
+  mobileMenu.style.left = "-250px";
+  mobileOverlay.style.display = "none";
 });
