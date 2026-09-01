@@ -95,3 +95,15 @@ function addToCart() {
     count.textContent = quantity;
   }
 }
+
+// Cart dropdown logic
+const cartBtn = document.querySelector(".nav__cart");
+const cartDropdown = document.querySelector(".cart__dropdown");
+
+cartBtn.addEventListener("click", function () {
+  if (cartDropdown.style.display === "block") {
+    cartDropdown.style.display = "none";
+  } else {
+    cartDropdown.style.display = "block";
+  }
+});
