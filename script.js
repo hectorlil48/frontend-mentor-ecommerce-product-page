@@ -1,6 +1,7 @@
 // Carousel Logic, for mobile and tablet
 let slidePosition = 0;
 const slides = document.getElementsByClassName("carousel__item");
+const thumbnails = document.querySelectorAll(".carousel__thumbnail");
 const totalSlides = slides.length;
 
 // Cart Selectors
@@ -149,4 +150,16 @@ mobileMenuCloseBtn.addEventListener("click", function () {
 mobileOverlay.addEventListener("click", function () {
   mobileMenu.style.left = "-250px";
   mobileOverlay.style.display = "none";
+});
+
+// Thumbnail click logic
+thumbnails.forEach(function (thumbnail, index) {
+  thumbnail.addEventListener("click", function () {
+    thumbnails.forEach(function (t) {
+      t.classList.remove("carousel__thumbnail-active");
+    });
+    thumbnail.classList.add("carousel__thumbnail-active");
+    slidePosition = index;
+    updateSlidePosition();
+  });
 });
