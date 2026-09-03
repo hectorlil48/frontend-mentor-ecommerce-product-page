@@ -9,6 +9,14 @@ const cartEmpty = document.querySelector(".cart__empty");
 const cartFull = document.querySelector(".cart__full");
 const cartQuantity = document.querySelector(".cart__quantity");
 
+// Lightbox Selectors
+const carouselContainer = document.querySelector(".carousel__container");
+const lightbox = document.querySelector(".lightbox__container");
+const lightboxCloseBtn = document.querySelector(".lightbox__close");
+const lightboxOverlay = document.querySelector(".lightbox__overlay");
+const lightboxSlides = document.getElementsByClassName("lightbox__item");
+const lightboxThumbnails = document.querySelectorAll(".lightbox__thumbnail");
+
 document
   .querySelector(".carousel__prev")
   .addEventListener("click", function () {
@@ -37,6 +45,7 @@ function moveToNextSlide() {
     slidePosition++;
   }
   updateSlidePosition();
+  updateLightboxSlidePosition();
 }
 
 function moveToPrevSlide() {
@@ -46,6 +55,7 @@ function moveToPrevSlide() {
     slidePosition--;
   }
   updateSlidePosition();
+  updateLightboxSlidePosition();
 }
 
 // Product Quantity and add to cart logic
@@ -163,3 +173,53 @@ thumbnails.forEach(function (thumbnail, index) {
     updateSlidePosition();
   });
 });
+
+// Lightbox logic
+carouselContainer.addEventListener("click", function () {
+  lightbox.style.display = "flex";
+  updateLightboxSlidePosition();
+  lightboxThumbnails.forEach(function (t) {
+    t.classList.remove("lightbox__thumbnail-active");
+  });
+  lightboxThumbnails[slidePosition].classList.add("lightbox__thumbnail-active");
+});
+
+lightboxCloseBtn.addEventListener("click", function () {
+  lightbox.style.display = "none";
+});
+
+lightboxOverlay.addEventListener("click", function () {
+  lightbox.style.display = "none";
+});
+
+document
+  .querySelector(".lightbox__prev")
+  .addEventListener("click", function () {
+    moveToPrevSlide();
+  });
+
+document
+  .querySelector(".lightbox__next")
+  .addEventListener("click", function () {
+    moveToNextSlide();
+  });
+
+lightboxThumbnails.forEach(function (thumbnail, index) {
+  thumbnail.addEventListener("click", function () {
+    lightboxThumbnails.forEach(function (t) {
+      t.classList.remove("lightbox__thumbnail-active");
+    });
+    thumbnail.classList.add("lightbox__thumbnail-active");
+    slidePosition = index;
+    updateLightboxSlidePosition();
+  });
+});
+
+function updateLightboxSlidePosition() {
+  for (let slide of lightboxSlides) {
+    slide.classList.remove("lightbox__item-visible");
+    slide.classList.add("lightbox__item-hidden");
+  }
+
+  lightboxSlides[slidePosition].classList.add("lightbox__item-visible");
+}
