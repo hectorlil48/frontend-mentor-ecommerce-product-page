@@ -410,6 +410,89 @@ body {
   background-color: var(--orange-300);
 }
 
+/* Lightbox Styles */
+.lightbox__container {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.lightbox__content {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox__close {
+  align-self: flex-end;
+  margin-bottom: 24px;
+}
+
+.lightbox__carousel {
+  border-radius: 15px;
+  overflow: hidden;
+  height: 550px;
+}
+
+.lightbox__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lightbox__item-visible {
+  display: block;
+  height: 100%;
+}
+
+.lightbox__actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__actions button {
+  width: 56px;
+  height: 56px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox__actions button img {
+  width: 14px;
+  height: 18px;
+}
+
+.lightbox__prev {
+  margin-left: -26px;
+}
+
+.lightbox__next {
+  margin-right: -26px;
+}
+
+.lightbox__thumbnails {
+  display: none;
+}
+
 @media (min-width: 768px) {
   /* tablet changes */
 
