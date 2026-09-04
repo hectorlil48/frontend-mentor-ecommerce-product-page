@@ -19,6 +19,19 @@ const lightboxThumbnails = document.querySelectorAll(".lightbox__thumbnail");
 
 document
   .querySelector(".carousel__prev")
+  .addEventListener("click", function (e) {
+    e.stopPropagation();
+    moveToPrevSlide();
+  });
+
+document
+  .querySelector(".carousel__next")
+  .addEventListener("click", function (e) {
+    e.stopPropagation();
+    moveToNextSlide();
+  });
+document
+  .querySelector(".carousel__prev")
   .addEventListener("click", function () {
     moveToPrevSlide();
   });
