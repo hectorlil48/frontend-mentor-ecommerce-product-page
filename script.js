@@ -30,17 +30,6 @@ document
     e.stopPropagation();
     moveToNextSlide();
   });
-document
-  .querySelector(".carousel__prev")
-  .addEventListener("click", function () {
-    moveToPrevSlide();
-  });
-
-document
-  .querySelector(".carousel__next")
-  .addEventListener("click", function () {
-    moveToNextSlide();
-  });
 
 function updateSlidePosition() {
   for (let slide of slides) {

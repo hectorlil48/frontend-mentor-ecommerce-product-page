@@ -267,6 +267,14 @@ body {
   object-fit: cover;
 }
 
+.carousel__item:nth-child(2) img {
+  object-position: center 8%;
+}
+
+.carousel__item:nth-child(3) img {
+  object-position: center 8%;
+}
+
 .carousel__actions {
   width: 100%;
   display: flex;
