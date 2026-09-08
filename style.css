@@ -393,10 +393,6 @@ body {
   align-items: center;
 }
 
-.product__quantity-btn:hover use {
-  fill: var(--orange-300);
-}
-
 .product__add-to-cart {
   width: 100%;
   display: flex;
@@ -411,11 +407,6 @@ body {
   font-weight: 700;
   line-height: 26px;
   box-shadow: 0px 20px 50px -20px rgba(255, 126, 27, 0.25);
-}
-
-.product__add-to-cart:hover,
-.cart__checkout:hover {
-  background-color: var(--orange-300);
 }
 
 .lightbox__container {
@@ -576,17 +567,6 @@ body {
     color: var(--grey-950);
   }
 
-  .nav__links a:hover {
-    border-bottom: 3px solid var(--orange-500);
-    margin-bottom: -46px;
-    padding-bottom: 46px;
-  }
-
-  .nav__profile-image:hover {
-    border: 2px solid var(--orange-500);
-    border-radius: 50%;
-  }
-
   .cart__dropdown {
     right: -74px;
     top: 110px;
@@ -652,13 +632,6 @@ body {
     background: rgba(255, 255, 255, 0.75);
   }
 
-  .carousel__thumbnail:hover::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.5);
-  }
-
   /* Product-Info */
   .product__info {
     padding: 66.5px 0px;
@@ -718,15 +691,6 @@ body {
   .lightbox__close {
     align-self: flex-end;
     margin-bottom: 24px;
-  }
-
-  .lightbox__close:hover path {
-    fill: var(--orange-500);
-  }
-
-  .lightbox__prev:hover path,
-  .lightbox__next:hover path {
-    stroke: var(--orange-500);
   }
 
   .lightbox__carousel {
@@ -809,6 +773,45 @@ body {
     position: absolute;
     inset: 0;
     background: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* So the hovver effect wont stick on mobile */
+@media (hover: hover) {
+  .nav__links a:hover {
+    border-bottom: 3px solid var(--orange-500);
+    margin-bottom: -46px;
+    padding-bottom: 46px;
+  }
+
+  .nav__profile-image:hover {
+    border: 2px solid var(--orange-500);
+    border-radius: 50%;
+  }
+
+  .product__quantity-btn:hover use {
+    fill: var(--orange-300);
+  }
+
+  .product__add-to-cart:hover,
+  .cart__checkout:hover {
+    background-color: var(--orange-300);
+  }
+
+  .carousel__thumbnail:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .lightbox__close:hover path {
+    fill: var(--orange-500);
+  }
+
+  .lightbox__prev:hover path,
+  .lightbox__next:hover path {
+    stroke: var(--orange-500);
   }
 
   .lightbox__thumbnail:hover::after {

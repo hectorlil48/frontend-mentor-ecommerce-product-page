@@ -48,6 +48,7 @@ function moveToNextSlide() {
   }
   updateSlidePosition();
   updateLightboxSlidePosition();
+  updateLightboxThumbnails();
 }
 
 function moveToPrevSlide() {
@@ -224,4 +225,11 @@ function updateLightboxSlidePosition() {
   }
 
   lightboxSlides[slidePosition].classList.add("lightbox__item-visible");
+}
+
+function updateLightboxThumbnails() {
+  lightboxThumbnails.forEach(function (t) {
+    t.classList.remove("lightbox__thumbnail-active");
+  });
+  lightboxThumbnails[slidePosition].classList.add("lightbox__thumbnail-active");
 }
