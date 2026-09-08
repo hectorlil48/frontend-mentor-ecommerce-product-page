@@ -142,6 +142,7 @@ body {
   background-color: var(--white);
   border-radius: 10px;
   width: 360px;
+  max-width: calc(100vw - 16px);
   z-index: 88;
   position: absolute;
   top: 76px;
@@ -213,6 +214,10 @@ body {
   top: 0;
   transition: 0.3s;
   padding: 24px;
+}
+
+.mobile__menu.is-open {
+  left: 0;
 }
 
 .mobile__menu-links {

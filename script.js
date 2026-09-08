@@ -6,12 +6,12 @@ const totalSlides = slides.length;
 
 // Prosuct Quantity and Add to Cart Logic
 let quantity = 0;
-let count = document.querySelector(".product__quantity-value");
+const count = document.querySelector(".product__quantity-value");
 const priceText = document.querySelector(
   ".product__discount-price",
 ).textContent;
 const price = parseFloat(priceText.replace("$", ""));
-let cartCount = document.querySelector(".nav__cart-badge");
+const cartCount = document.querySelector(".nav__cart-badge");
 let totalItems = 0;
 
 // Cart Selectors
@@ -78,6 +78,7 @@ function moveToPrevSlide() {
   }
   updateSlidePosition();
   updateLightboxSlidePosition();
+  updateLightboxThumbnails();
 }
 
 // Product Quantity and add to cart logic
@@ -153,17 +154,17 @@ cartDeleteBtn.addEventListener("click", function () {
 
 // Mobile menu logic
 mobileMenuBtn.addEventListener("click", function () {
-  mobileMenu.style.left = "0";
+  mobileMenu.classList.add("is-open");
   mobileOverlay.style.display = "block";
 });
 
 mobileMenuCloseBtn.addEventListener("click", function () {
-  mobileMenu.style.left = "-250px";
+  mobileMenu.classList.remove("is-open");
   mobileOverlay.style.display = "none";
 });
 
 mobileOverlay.addEventListener("click", function () {
-  mobileMenu.style.left = "-250px";
+  mobileMenu.classList.remove("is-open");
   mobileOverlay.style.display = "none";
 });
 
