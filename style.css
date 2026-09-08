@@ -150,6 +150,10 @@ body {
   box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.2);
 }
 
+.cart__dropdown.is-open {
+  display: block;
+}
+
 .dropdown__title {
   font-weight: 700;
   line-height: 26px;
@@ -166,9 +170,17 @@ body {
   color: var(--grey-500);
 }
 
+.cart__empty.is-hidden {
+  display: none;
+}
+
 .cart__full {
   padding: 24px;
   display: none;
+}
+
+.cart__full.is-visible {
+  display: block;
 }
 
 .cart__full-content {

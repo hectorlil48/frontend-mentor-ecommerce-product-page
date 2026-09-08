@@ -66,6 +66,7 @@ function moveToNextSlide() {
     slidePosition++;
   }
   updateSlidePosition();
+  updateMainThumbnails();
   updateLightboxSlidePosition();
   updateLightboxThumbnails();
 }
@@ -77,6 +78,7 @@ function moveToPrevSlide() {
     slidePosition--;
   }
   updateSlidePosition();
+  updateMainThumbnails();
   updateLightboxSlidePosition();
   updateLightboxThumbnails();
 }
@@ -120,8 +122,8 @@ function addToCart() {
     totalItems = totalItems + quantity;
     cartCount.textContent = totalItems;
     cartCount.style.display = "flex";
-    cartEmpty.style.display = "none";
-    cartFull.style.display = "block";
+    cartEmpty.classList.add("is-hidden");
+    cartFull.classList.add("is-visible");
     cartQuantity.textContent = totalItems;
     const totalPrice = (totalItems * price).toFixed(2);
 
@@ -135,11 +137,7 @@ function addToCart() {
 // Cart dropdown logic
 
 cartBtn.addEventListener("click", function () {
-  if (cartDropdown.style.display === "block") {
-    cartDropdown.style.display = "none";
-  } else {
-    cartDropdown.style.display = "block";
-  }
+  cartDropdown.classList.toggle("is-open");
 });
 
 // Cart delete button logic
@@ -148,8 +146,8 @@ cartDeleteBtn.addEventListener("click", function () {
   totalItems = 0;
   cartCount.textContent = totalItems;
   cartCount.style.display = "none";
-  cartEmpty.style.display = "block";
-  cartFull.style.display = "none";
+  cartEmpty.classList.add("is-hidden");
+  cartFull.classList.add("is-visible");
 });
 
 // Mobile menu logic
@@ -169,14 +167,20 @@ mobileOverlay.addEventListener("click", function () {
 });
 
 // Thumbnail click logic
+function updateMainThumbnails() {
+  thumbnails.forEach(function (t) {
+    t.classList.remove("carousel__thumbnail-active");
+  });
+  thumbnails[slidePosition].classList.add("carousel__thumbnail-active");
+}
+
 thumbnails.forEach(function (thumbnail, index) {
   thumbnail.addEventListener("click", function () {
-    thumbnails.forEach(function (t) {
-      t.classList.remove("carousel__thumbnail-active");
-    });
-    thumbnail.classList.add("carousel__thumbnail-active");
     slidePosition = index;
     updateSlidePosition();
+    updateMainThumbnails();
+    updateLightboxSlidePosition();
+    updateLightboxThumbnails();
   });
 });
 
@@ -215,6 +219,9 @@ lightboxThumbnails.forEach(function (thumbnail, index) {
     thumbnail.classList.add("lightbox__thumbnail-active");
     slidePosition = index;
     updateLightboxSlidePosition();
+    updateLightboxThumbnails();
+    updateSlidePosition();
+    updateMainThumbnails();
   });
 });
 
