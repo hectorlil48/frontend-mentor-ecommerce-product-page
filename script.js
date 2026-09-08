@@ -121,7 +121,7 @@ function addToCart() {
   } else {
     totalItems = totalItems + quantity;
     cartCount.textContent = totalItems;
-    cartCount.style.display = "flex";
+    cartCount.classList.add("is-visible");
     cartEmpty.classList.add("is-hidden");
     cartFull.classList.add("is-visible");
     cartQuantity.textContent = totalItems;
@@ -145,25 +145,25 @@ cartBtn.addEventListener("click", function () {
 cartDeleteBtn.addEventListener("click", function () {
   totalItems = 0;
   cartCount.textContent = totalItems;
-  cartCount.style.display = "none";
-  cartEmpty.classList.add("is-hidden");
-  cartFull.classList.add("is-visible");
+  cartCount.classList.remove("is-visible");
+  cartEmpty.classList.remove("is-hidden");
+  cartFull.classList.remove("is-visible");
 });
 
 // Mobile menu logic
 mobileMenuBtn.addEventListener("click", function () {
   mobileMenu.classList.add("is-open");
-  mobileOverlay.style.display = "block";
+  mobileOverlay.classList.add("is-visible");
 });
 
 mobileMenuCloseBtn.addEventListener("click", function () {
   mobileMenu.classList.remove("is-open");
-  mobileOverlay.style.display = "none";
+  mobileOverlay.classList.remove("is-visible");
 });
 
 mobileOverlay.addEventListener("click", function () {
   mobileMenu.classList.remove("is-open");
-  mobileOverlay.style.display = "none";
+  mobileOverlay.classList.remove("is-visible");
 });
 
 // Thumbnail click logic

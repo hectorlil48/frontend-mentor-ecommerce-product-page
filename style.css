@@ -130,6 +130,10 @@ body {
   font-weight: 700;
 }
 
+.nav__cart-badge.is-visible {
+  display: flex;
+}
+
 .nav__profile-image {
   width: 24px;
   height: 24px;
@@ -164,7 +168,7 @@ body {
 
 .cart__empty {
   text-align: center;
-  padding: 73px 0 84px;
+  padding: 70px 0 84px;
   font-weight: 700;
   line-height: 26px;
   color: var(--grey-500);
@@ -253,6 +257,10 @@ body {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 98;
+}
+
+.mobile__overlay.is-visible {
+  display: block;
 }
 
 /* Product Carousel */
