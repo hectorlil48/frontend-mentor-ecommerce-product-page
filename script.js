@@ -4,10 +4,23 @@ const slides = document.getElementsByClassName("carousel__item");
 const thumbnails = document.querySelectorAll(".carousel__thumbnail");
 const totalSlides = slides.length;
 
+// Prosuct Quantity and Add to Cart Logic
+let quantity = 0;
+let count = document.querySelector(".product__quantity-value");
+const priceText = document.querySelector(
+  ".product__discount-price",
+).textContent;
+const price = parseFloat(priceText.replace("$", ""));
+let cartCount = document.querySelector(".nav__cart-badge");
+let totalItems = 0;
+
 // Cart Selectors
 const cartEmpty = document.querySelector(".cart__empty");
 const cartFull = document.querySelector(".cart__full");
 const cartQuantity = document.querySelector(".cart__quantity");
+const cartDeleteBtn = document.querySelector(".cart__delete");
+const cartBtn = document.querySelector(".nav__cart");
+const cartDropdown = document.querySelector(".cart__dropdown");
 
 // Lightbox Selectors
 const carouselContainer = document.querySelector(".carousel__container");
@@ -16,6 +29,12 @@ const lightboxCloseBtn = document.querySelector(".lightbox__close");
 const lightboxOverlay = document.querySelector(".lightbox__overlay");
 const lightboxSlides = document.getElementsByClassName("lightbox__item");
 const lightboxThumbnails = document.querySelectorAll(".lightbox__thumbnail");
+
+// Mobile Menu Selectors
+const mobileMenuBtn = document.querySelector(".nav__menu-icon");
+const mobileMenuCloseBtn = document.querySelector(".mobile__close-menu");
+const mobileMenu = document.querySelector(".mobile__menu");
+const mobileOverlay = document.querySelector(".mobile__overlay");
 
 document
   .querySelector(".carousel__prev")
@@ -62,15 +81,6 @@ function moveToPrevSlide() {
 }
 
 // Product Quantity and add to cart logic
-let quantity = 0;
-let count = document.querySelector(".product__quantity-value");
-
-const priceText = document.querySelector(
-  ".product__discount-price",
-).textContent;
-const price = parseFloat(priceText.replace("$", ""));
-let cartCount = document.querySelector(".nav__cart-badge");
-let totalItems = 0;
 
 document
   .querySelector(".product__decrease")
@@ -85,11 +95,9 @@ document
   });
 
 function decreaseCount() {
-  if (quantity === 0) {
-  } else {
+  if (quantity > 0) {
     quantity--;
   }
-
   count.textContent = quantity;
 }
 
@@ -106,6 +114,7 @@ document
 
 function addToCart() {
   if (quantity === 0) {
+    return;
   } else {
     totalItems = totalItems + quantity;
     cartCount.textContent = totalItems;
@@ -123,8 +132,7 @@ function addToCart() {
 }
 
 // Cart dropdown logic
-const cartBtn = document.querySelector(".nav__cart");
-const cartDropdown = document.querySelector(".cart__dropdown");
+
 cartBtn.addEventListener("click", function () {
   if (cartDropdown.style.display === "block") {
     cartDropdown.style.display = "none";
@@ -134,7 +142,6 @@ cartBtn.addEventListener("click", function () {
 });
 
 // Cart delete button logic
-const cartDeleteBtn = document.querySelector(".cart__delete");
 
 cartDeleteBtn.addEventListener("click", function () {
   totalItems = 0;
@@ -145,11 +152,6 @@ cartDeleteBtn.addEventListener("click", function () {
 });
 
 // Mobile menu logic
-const mobileMenuBtn = document.querySelector(".nav__menu-icon");
-const mobileMenuCloseBtn = document.querySelector(".mobile__close-menu");
-const mobileMenu = document.querySelector(".mobile__menu");
-const mobileOverlay = document.querySelector(".mobile__overlay");
-
 mobileMenuBtn.addEventListener("click", function () {
   mobileMenu.style.left = "0";
   mobileOverlay.style.display = "block";
@@ -181,10 +183,7 @@ thumbnails.forEach(function (thumbnail, index) {
 carouselContainer.addEventListener("click", function () {
   lightbox.style.display = "flex";
   updateLightboxSlidePosition();
-  lightboxThumbnails.forEach(function (t) {
-    t.classList.remove("lightbox__thumbnail-active");
-  });
-  lightboxThumbnails[slidePosition].classList.add("lightbox__thumbnail-active");
+  updateLightboxThumbnails();
 });
 
 lightboxCloseBtn.addEventListener("click", function () {
