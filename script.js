@@ -201,7 +201,7 @@ carouselContainer.addEventListener("click", function () {
   if (window.innerWidth < 1100) return; // lightbox is desktop-only
 
   lastFocusedElement = document.activeElement; // remember what triggered it
-  lightbox.style.display = "flex";
+  lightbox.classList.add("is-open");
   updateLightboxSlidePosition();
   updateLightboxThumbnails();
 
@@ -212,13 +212,13 @@ carouselContainer.addEventListener("click", function () {
 });
 
 window.addEventListener("resize", function () {
-  if (window.innerWidth < 1100 && lightbox.style.display === "flex") {
+  if (window.innerWidth < 1100 && lightbox.classList.contains("is-open")) {
     closeLightbox();
   }
 });
 
 function closeLightbox() {
-  lightbox.style.display = "none";
+  lightbox.classList.remove("is-open");
   document.removeEventListener("keydown", handleLightboxKeydown);
 
   // Return focus to whatever opened it
