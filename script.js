@@ -64,16 +64,20 @@ function updateSlidePosition() {
   slides[slidePosition].setAttribute("aria-current", "true");
 }
 
+function syncCarouselState() {
+  updateSlidePosition();
+  updateMainThumbnails();
+  updateLightboxSlidePosition();
+  updateLightboxThumbnails();
+}
+
 function moveToNextSlide() {
   if (slidePosition === totalSlides - 1) {
     slidePosition = 0;
   } else {
     slidePosition++;
   }
-  updateSlidePosition();
-  updateMainThumbnails();
-  updateLightboxSlidePosition();
-  updateLightboxThumbnails();
+  syncCarouselState();
 }
 
 function moveToPrevSlide() {
@@ -82,10 +86,7 @@ function moveToPrevSlide() {
   } else {
     slidePosition--;
   }
-  updateSlidePosition();
-  updateMainThumbnails();
-  updateLightboxSlidePosition();
-  updateLightboxThumbnails();
+  syncCarouselState();
 }
 
 // Product Quantity and add to cart logic
@@ -189,10 +190,7 @@ function updateMainThumbnails() {
 thumbnails.forEach(function (thumbnail, index) {
   thumbnail.addEventListener("click", function () {
     slidePosition = index;
-    updateSlidePosition();
-    updateMainThumbnails();
-    updateLightboxSlidePosition();
-    updateLightboxThumbnails();
+    syncCarouselState();
   });
 });
 
@@ -202,8 +200,7 @@ carouselContainer.addEventListener("click", function () {
 
   lastFocusedElement = document.activeElement; // remember what triggered it
   lightbox.classList.add("is-open");
-  updateLightboxSlidePosition();
-  updateLightboxThumbnails();
+  syncCarouselState();
 
   // Move focus into the lightbox
   lightboxCloseBtn.focus();
@@ -273,10 +270,7 @@ document
 lightboxThumbnails.forEach(function (thumbnail, index) {
   thumbnail.addEventListener("click", function () {
     slidePosition = index;
-    updateLightboxSlidePosition();
-    updateLightboxThumbnails();
-    updateSlidePosition();
-    updateMainThumbnails();
+    syncCarouselState();
   });
 });
 
