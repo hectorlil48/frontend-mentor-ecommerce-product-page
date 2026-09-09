@@ -31,11 +31,11 @@
         <div class="nav__cart-profile">
           <button class="nav__cart" aria-label="Cart">
             <img src="./images/icon-cart.svg" alt="" />
-            <span class="nav__cart-badge">0</span>
+            <span class="nav__cart-badge" aria-live="polite">0</span>
           </button>
-          <div class="nav__profile-image">
-            <img src="./images/image-avatar.png" alt="Profile image" />
-          </div>
+          <button class="nav__profile-image" aria-label="Profile Image">
+            <img src="./images/image-avatar.png" alt="" />
+          </button>
 
           <div class="cart__dropdown">
             <p class="dropdown__title">Cart</p>
@@ -44,18 +44,21 @@
               <div class="cart__full-content">
                 <img
                   src="./images/image-product-1-thumbnail.jpg"
-                  alt="Thumbnail 1"
+                  alt=""
                   class="cart__thumbnail"
                 />
                 <div class="cart__description">
                   <p class="cart__title">Fall Limited Edition Sneakers</p>
                   <p class="cart__price">
-                    $125.00 x <span class="cart__quantity">3</span>
-                    <span class="cart__total-price">$375.00</span>
+                    $125.00 x
+                    <span class="cart__quantity" aria-live="polite">3</span>
+                    <span class="cart__total-price" aria-live="polite"
+                      >$375.00</span
+                    >
                   </p>
                 </div>
-                <button class="cart__delete">
-                  <img src="./images/icon-delete.svg" alt="delete icon" />
+                <button class="cart__delete" aria-label="Remove item from cart">
+                  <img src="./images/icon-delete.svg" alt="" />
                 </button>
               </div>
               <button class="cart__checkout">Checkout</button>
@@ -84,21 +87,34 @@
       <div class="product__container">
         <div class="product__image-column">
           <div class="carousel__container">
-            <div class="carousel__item carousel__item-visible">
-              <img src="./images/image-product-1.jpg" alt="Product image 1" />
-            </div>
+            <button
+              class="carousel__item carousel__item-visible"
+              aria-current="true"
+              aria-label="Show front view of the sneakers"
+            >
+              <img src="./images/image-product-1.jpg" alt="" />
+            </button>
 
-            <div class="carousel__item">
-              <img src="./images/image-product-2.jpg" alt="Product image 2" />
-            </div>
+            <button
+              class="carousel__item"
+              aria-label="Show back view of the sneakers"
+            >
+              <img src="./images/image-product-2.jpg" alt="" />
+            </button>
 
-            <div class="carousel__item">
-              <img src="./images/image-product-3.jpg" alt="Product image 3" />
-            </div>
+            <button
+              class="carousel__item"
+              aria-label="Show alternate view of the sneakers"
+            >
+              <img src="./images/image-product-3.jpg" alt="" />
+            </button>
 
-            <div class="carousel__item">
-              <img src="./images/image-product-4.jpg" alt="Product image 4" />
-            </div>
+            <button
+              class="carousel__item"
+              aria-label="Show side view of the sneakers"
+            >
+              <img src="./images/image-product-4.jpg" alt="" />
+            </button>
 
             <div class="carousel__actions">
               <button class="carousel__prev" aria-label="Previous image">
@@ -112,30 +128,31 @@
           </div>
 
           <div class="carousel__thumbnail-container">
-            <div class="carousel__thumbnail carousel__thumbnail-active">
-              <img
-                src="./images/image-product-1-thumbnail.jpg"
-                alt="Thumbnail 1"
-              />
-            </div>
-            <div class="carousel__thumbnail">
-              <img
-                src="./images/image-product-2-thumbnail.jpg"
-                alt="Thumbnail 2"
-              />
-            </div>
-            <div class="carousel__thumbnail">
-              <img
-                src="./images/image-product-3-thumbnail.jpg"
-                alt="Thumbnail 3"
-              />
-            </div>
-            <div class="carousel__thumbnail">
-              <img
-                src="./images/image-product-4-thumbnail.jpg"
-                alt="Thumbnail 4"
-              />
-            </div>
+            <button
+              class="carousel__thumbnail carousel__thumbnail-active"
+              aria-current="true"
+              aria-label="Show front view of the sneakers"
+            >
+              <img src="./images/image-product-1-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="carousel__thumbnail"
+              aria-label="Show back view of the sneakers"
+            >
+              <img src="./images/image-product-2-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="carousel__thumbnail"
+              aria-label="Show alternate view of the sneakers"
+            >
+              <img src="./images/image-product-3-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="carousel__thumbnail"
+              aria-label="Show side view of the sneakers"
+            >
+              <img src="./images/image-product-4-thumbnail.jpg" alt="" />
+            </button>
           </div>
         </div>
 
@@ -176,7 +193,7 @@
                   <use fill="#FF7E1B" fill-rule="nonzero" xlink:href="#a" />
                 </svg>
               </button>
-              <span class="product__quantity-value">0</span>
+              <span class="product__quantity-value" aria-live="polite">0</span>
               <button
                 class="product__quantity-btn product__increase"
                 aria-label="Increase quantity"
@@ -198,7 +215,7 @@
               </button>
             </div>
 
-            <button class="product__add-to-cart" aria-label="Add to cart">
+            <button class="product__add-to-cart">
               <svg
                 class="product__cart-icon"
                 width="22"
@@ -235,21 +252,34 @@
             </svg>
           </button>
           <div class="lightbox__carousel">
-            <div class="lightbox__item lightbox__item-visible">
-              <img src="./images/image-product-1.jpg" alt="Product image 1" />
-            </div>
+            <button
+              class="lightbox__item lightbox__item-visible"
+              aria-current="true"
+              aria-label="Show front view of the sneakers"
+            >
+              <img src="./images/image-product-1.jpg" alt="" />
+            </button>
 
-            <div class="lightbox__item">
-              <img src="./images/image-product-2.jpg" alt="Product image 2" />
-            </div>
+            <button
+              class="lightbox__item"
+              aria-label="Show back view of the sneakers"
+            >
+              <img src="./images/image-product-2.jpg" alt="" />
+            </button>
 
-            <div class="lightbox__item">
-              <img src="./images/image-product-3.jpg" alt="Product image 3" />
-            </div>
+            <button
+              class="lightbox__item"
+              aria-label="Show alternative view of the sneakers"
+            >
+              <img src="./images/image-product-3.jpg" alt="" />
+            </button>
 
-            <div class="lightbox__item">
-              <img src="./images/image-product-4.jpg" alt="Product image 4" />
-            </div>
+            <button
+              class="lightbox__item"
+              aria-label="Show side view of the sneakers"
+            >
+              <img src="./images/image-product-4.jpg" alt="" />
+            </button>
 
             <div class="lightbox__actions">
               <button class="lightbox__prev" aria-label="Previous image">
@@ -279,30 +309,31 @@
           </div>
 
           <div class="lightbox__thumbnails">
-            <div class="lightbox__thumbnail lightbox__thumbnail-active">
-              <img
-                src="./images/image-product-1-thumbnail.jpg"
-                alt="Thumbnail 1"
-              />
-            </div>
-            <div class="lightbox__thumbnail">
-              <img
-                src="./images/image-product-2-thumbnail.jpg"
-                alt="Thumbnail 2"
-              />
-            </div>
-            <div class="lightbox__thumbnail">
-              <img
-                src="./images/image-product-3-thumbnail.jpg"
-                alt="Thumbnail 3"
-              />
-            </div>
-            <div class="lightbox__thumbnail">
-              <img
-                src="./images/image-product-4-thumbnail.jpg"
-                alt="Thumbnail 4"
-              />
-            </div>
+            <button
+              class="lightbox__thumbnail lightbox__thumbnail-active"
+              aria-current="true"
+              aria-label="Show front view of the sneakers"
+            >
+              <img src="./images/image-product-1-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="lightbox__thumbnail"
+              aria-label="Show back view of the sneakers"
+            >
+              <img src="./images/image-product-2-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="lightbox__thumbnail"
+              aria-label="Show alternative view of the sneakers"
+            >
+              <img src="./images/image-product-3-thumbnail.jpg" alt="" />
+            </button>
+            <button
+              class="lightbox__thumbnail"
+              aria-label="Show side view of the sneakers"
+            >
+              <img src="./images/image-product-4-thumbnail.jpg" alt="" />
+            </button>
           </div>
         </div>
       </div>

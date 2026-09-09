@@ -29,6 +29,8 @@ const lightboxCloseBtn = document.querySelector(".lightbox__close");
 const lightboxOverlay = document.querySelector(".lightbox__overlay");
 const lightboxSlides = document.getElementsByClassName("lightbox__item");
 const lightboxThumbnails = document.querySelectorAll(".lightbox__thumbnail");
+const lightboxContent = document.querySelector(".lightbox__content");
+let lastFocusedElement = null; // tracks what to return focus to on close
 
 // Mobile Menu Selectors
 const mobileMenuBtn = document.querySelector(".nav__menu-icon");
@@ -54,9 +56,12 @@ function updateSlidePosition() {
   for (let slide of slides) {
     slide.classList.remove("carousel__item-visible");
     slide.classList.add("carousel__item-hidden");
+    slide.removeAttribute("aria-current");
   }
 
   slides[slidePosition].classList.add("carousel__item-visible");
+  slides[slidePosition].classList.remove("carousel__item-hidden");
+  slides[slidePosition].setAttribute("aria-current", "true");
 }
 
 function moveToNextSlide() {
@@ -170,8 +175,10 @@ mobileOverlay.addEventListener("click", function () {
 function updateMainThumbnails() {
   thumbnails.forEach(function (t) {
     t.classList.remove("carousel__thumbnail-active");
+    t.removeAttribute("aria-current");
   });
   thumbnails[slidePosition].classList.add("carousel__thumbnail-active");
+  thumbnails[slidePosition].setAttribute("aria-current", "true");
 }
 
 thumbnails.forEach(function (thumbnail, index) {
@@ -186,18 +193,59 @@ thumbnails.forEach(function (thumbnail, index) {
 
 // Lightbox logic
 carouselContainer.addEventListener("click", function () {
+  lastFocusedElement = document.activeElement; // remember what triggered it
   lightbox.style.display = "flex";
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
   updateLightboxSlidePosition();
   updateLightboxThumbnails();
+
+  // Move focus into the lightbox
+  lightboxCloseBtn.focus();
+
+  document.addEventListener("keydown", handleLightboxKeydown);
 });
 
-lightboxCloseBtn.addEventListener("click", function () {
+function closeLightbox() {
   lightbox.style.display = "none";
-});
+  document.removeEventListener("keydown", handleLightboxKeydown);
 
-lightboxOverlay.addEventListener("click", function () {
-  lightbox.style.display = "none";
-});
+  // Return focus to whatever opened it
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+// Replace your existing close handlers to use the new function
+lightboxCloseBtn.addEventListener("click", closeLightbox);
+lightboxOverlay.addEventListener("click", closeLightbox);
+
+function handleLightboxKeydown(e) {
+  if (e.key === "Escape") {
+    closeLightbox();
+    return;
+  }
+
+  if (e.key === "Tab") {
+    trapFocus(e);
+  }
+}
+
+function trapFocus(e) {
+  const focusableElements = lightboxContent.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+  );
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  if (e.shiftKey && document.activeElement === firstElement) {
+    e.preventDefault();
+    lastElement.focus();
+  } else if (!e.shiftKey && document.activeElement === lastElement) {
+    e.preventDefault();
+    firstElement.focus();
+  }
+}
 
 document
   .querySelector(".lightbox__prev")
@@ -213,10 +261,6 @@ document
 
 lightboxThumbnails.forEach(function (thumbnail, index) {
   thumbnail.addEventListener("click", function () {
-    lightboxThumbnails.forEach(function (t) {
-      t.classList.remove("lightbox__thumbnail-active");
-    });
-    thumbnail.classList.add("lightbox__thumbnail-active");
     slidePosition = index;
     updateLightboxSlidePosition();
     updateLightboxThumbnails();
@@ -229,14 +273,19 @@ function updateLightboxSlidePosition() {
   for (let slide of lightboxSlides) {
     slide.classList.remove("lightbox__item-visible");
     slide.classList.add("lightbox__item-hidden");
+    slide.removeAttribute("aria-current");
   }
 
   lightboxSlides[slidePosition].classList.add("lightbox__item-visible");
+  lightboxSlides[slidePosition].classList.remove("lightbox__item-hidden");
+  lightboxSlides[slidePosition].setAttribute("aria-current", "true");
 }
 
 function updateLightboxThumbnails() {
   lightboxThumbnails.forEach(function (t) {
     t.classList.remove("lightbox__thumbnail-active");
+    t.removeAttribute("aria-current");
   });
   lightboxThumbnails[slidePosition].classList.add("lightbox__thumbnail-active");
+  lightboxThumbnails[slidePosition].setAttribute("aria-current", "true");
 }

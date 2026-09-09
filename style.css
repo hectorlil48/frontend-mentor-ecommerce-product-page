@@ -276,6 +276,12 @@ body {
   display: none;
 }
 
+.carousel__item {
+  appearance: none;
+  width: 100%;
+  text-align: left;
+}
+
 .carousel__item,
 .carousel__item-hidden {
   display: none;
@@ -722,6 +728,12 @@ body {
     border-radius: 15px;
     overflow: hidden;
     height: 550px;
+  }
+
+  .lightbox__item {
+    appearance: none;
+    width: 100%;
+    text-align: left;
   }
 
   .lightbox__item,
