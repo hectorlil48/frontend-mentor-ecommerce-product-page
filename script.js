@@ -193,6 +193,8 @@ thumbnails.forEach(function (thumbnail, index) {
 
 // Lightbox logic
 carouselContainer.addEventListener("click", function () {
+  if (window.innerWidth < 1100) return; // lightbox is desktop-only
+
   lastFocusedElement = document.activeElement; // remember what triggered it
   lightbox.style.display = "flex";
   lightbox.setAttribute("role", "dialog");
@@ -204,6 +206,12 @@ carouselContainer.addEventListener("click", function () {
   lightboxCloseBtn.focus();
 
   document.addEventListener("keydown", handleLightboxKeydown);
+});
+
+window.addEventListener("resize", function () {
+  if (window.innerWidth < 1100 && lightbox.style.display === "flex") {
+    closeLightbox();
+  }
 });
 
 function closeLightbox() {
