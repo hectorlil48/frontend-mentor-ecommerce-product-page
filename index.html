@@ -29,7 +29,12 @@
           </ul>
         </div>
         <div class="nav__cart-profile">
-          <button class="nav__cart" aria-label="Cart">
+          <button
+            class="nav__cart"
+            aria-label="Cart"
+            aria-expanded="false"
+            aria-controls="cart-dropdown"
+          >
             <img src="./images/icon-cart.svg" alt="" />
             <span class="nav__cart-badge" aria-live="polite">0</span>
           </button>
@@ -37,7 +42,7 @@
             <img src="./images/image-avatar.png" alt="" />
           </button>
 
-          <div class="cart__dropdown">
+          <div class="cart__dropdown" id="cart-dropdown" aria-hidden="true">
             <p class="dropdown__title">Cart</p>
             <p class="cart__empty">Your cart is empty.</p>
             <div class="cart__full">
@@ -68,7 +73,7 @@
       </div>
     </nav>
 
-    <div class="mobile__menu">
+    <div class="mobile__menu" inert>
       <button class="mobile__close-menu" aria-label="Close Menu">
         <img src="./images/icon-close.svg" alt="" />
       </button>
@@ -236,7 +241,12 @@
 
       <div class="lightbox__container">
         <div class="lightbox__overlay"></div>
-        <div class="lightbox__content">
+        <div
+          class="lightbox__content"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Product image gallery"
+        >
           <button class="lightbox__close" aria-label="Close lightbox">
             <svg
               width="20"

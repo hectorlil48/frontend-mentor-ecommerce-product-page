@@ -143,6 +143,8 @@ function addToCart() {
 
 cartBtn.addEventListener("click", function () {
   cartDropdown.classList.toggle("is-open");
+  const isOpen = cartBtn.getAttribute("aria-expanded") === "true";
+  cartBtn.setAttribute("aria-expanded", !isOpen);
 });
 
 // Cart delete button logic
@@ -158,16 +160,19 @@ cartDeleteBtn.addEventListener("click", function () {
 // Mobile menu logic
 mobileMenuBtn.addEventListener("click", function () {
   mobileMenu.classList.add("is-open");
+  mobileMenu.removeAttribute("inert");
   mobileOverlay.classList.add("is-visible");
 });
 
 mobileMenuCloseBtn.addEventListener("click", function () {
   mobileMenu.classList.remove("is-open");
+  mobileMenu.setAttribute("inert", "");
   mobileOverlay.classList.remove("is-visible");
 });
 
 mobileOverlay.addEventListener("click", function () {
   mobileMenu.classList.remove("is-open");
+  mobileMenu.setAttribute("inert", "");
   mobileOverlay.classList.remove("is-visible");
 });
 
@@ -197,8 +202,6 @@ carouselContainer.addEventListener("click", function () {
 
   lastFocusedElement = document.activeElement; // remember what triggered it
   lightbox.style.display = "flex";
-  lightbox.setAttribute("role", "dialog");
-  lightbox.setAttribute("aria-modal", "true");
   updateLightboxSlidePosition();
   updateLightboxThumbnails();
 
